@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Credit Eligibility Checker</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/favicon.ico')}}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">For <br> Purpose <br> Co.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#page-top">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fill-form">Fill The Form</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">We Exist For Purpose!</div>
+            <div class="masthead pb-3">Know your eligibility for taking credit in <br>an instant and seamless way with
+                us</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+        </div>
+    </header>
+    <!-- Services-->
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Services</h2>
+                <h3 class="section-subheading text-muted">Provides you a simpler way applying for credit card which will
+                    ease <br> the process as you will know your eligibility right away!</h3>
+            </div>
+            <div class="row text-center justify-content-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="far fa-credit-card fa-stack-1x fa-inverse"></i>
+                        <!-- <i class="far fa-credit-card"></i> -->
+                    </span>
+                    <h4 class="my-3">Credit Eligibility</h4>
+                    <p class="text-muted">Classify your eligibility in taking credit based on data you provided just in
+                        one click.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-money-bill-wave fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Monthly Payment</h4>
+                    <p class="text-muted">Classify your monthly payment based on your inputted income just in one click
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Form Grid-->
+    <section class="page-section bg-dark" id="fill-form">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase text-light">So Are You Eligible ?</h2>
+                <h3 class="section-subheading text-light">Fill the form below and you'll see your eligibility and
+                    maximum disbursement in taking credit right away!</h3>
+            </div>
+            <form id="formClassify" action="/predict" method="POST">
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Name" id="name" name="name">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Applicant Income" id="applicant_income"
+                            name="applicant_income">
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Gender" name="gender">
+                            <option selected hidden>Select Gender</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Co-Applicant Income"
+                            id="co_applicant_income" name="co_applicant_income">
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Married" name="married">
+                            <option selected hidden>Are you married ?</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Loan Amount" id="loan_amount"
+                            name="loan_amount">
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Dependents" name="dependents">
+                            <option selected hidden>Dependents</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Loan Amount Term (In Days)"
+                            id="loan_amount_term" name="loan_amount_term">
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Education" name="education">
+                            <option selected hidden>Education</option>
+                            <option value="1">Graduate</option>
+                            <option value="0">Not Graduate</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Credit History" name="credit_history">
+                            <option selected hidden>Credit History</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Self Employed" name="self_employed">
+                            <option selected hidden>Self Employed</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Property Area" name="property_area">
+                            <option selected hidden>Property Area</option>
+                            <option value="Urban">Urban</option>
+                            <option value="Semiurban">Semi-Urban</option>
+                            <option value="Rural">Rural</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row text-center justify-content-center pt-3">
+                    <div class="col">
+                        <button class="btn btn-primary btn-xl text-uppercase" type="submit">Submit</button>
+                        <button class="btn btn-outline-primary btn-xl text-uppercase">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Dhela 2021</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static',filename='js/scripts.js')}}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>
